@@ -1,68 +1,100 @@
-# Web Architect — Claude Code Skill
+<p align="center">
+  <img src="https://img.shields.io/badge/Claude_Code-Skill-blueviolet?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0xMiAyTDIgN2wxMCA1IDEwLTV6Ii8+PHBhdGggZD0iTTIgMTdsMTAgNSAxMC01Ii8+PHBhdGggZD0iTTIgMTJsMTAgNSAxMC01Ii8+PC9zdmc+" alt="Claude Code Skill" />
+  <img src="https://img.shields.io/badge/Agents-4_Subagents-orange?style=for-the-badge" alt="4 Subagents" />
+  <img src="https://img.shields.io/badge/Profiles-8_Project_Types-green?style=for-the-badge" alt="8 Profiles" />
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
+</p>
 
-A 4-agent orchestrator skill for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that runs a full **design-to-code pipeline** for any web project. One command generates a unique design system, plans the architecture, builds the code, and reviews quality — all with enforced constraints that prevent generic "AI-generated" output.
+# 🏗️ Web Architect — Claude Code Skill
 
-## The Problem
+> **One command. Four agents. Zero generic output.**
+
+A 4-agent orchestrator skill for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that runs a full **design-to-code pipeline** for any web project. One command generates a unique design system, plans the architecture, builds the code, and reviews quality — all with enforced constraints that prevent the "AI-generated" look.
+
+```
+/wa:design homepage with hero, pricing table, and testimonials
+```
+
+---
+
+## 😤 The Problem
 
 Every AI-generated website looks the same: Inter font, blue-purple gradient, centered card grid, generic spacing. Claude Code skills work in silos — you manually wire design skills, architecture skills, and review skills per project. Quality varies. Context window bloats when multiple skills load.
 
-## The Solution
+## ✨ The Solution
 
-`/wa:design` conducts 4 specialized subagents through a complete pipeline:
+`/wa:design` conducts **4 specialized subagents** through a complete pipeline:
 
 ```
-Designer → Design Gate (you approve) → Architect → Builder → Reviewer → Fix Loop
+🎨 Designer → 🚦 Design Gate (you approve) → 📐 Architect → 🔨 Builder → 🔍 Reviewer → 🔄 Fix Loop
 ```
 
-Each agent runs in fresh context (~5% orchestrator overhead). Data flows via files on disk. The system learns from your feedback over time.
+Each agent runs in **fresh context** (~5% orchestrator overhead). Data flows via files on disk. The system **learns from your feedback** over time.
 
-## What Makes It Different
+---
 
-### Constrained Generation
+## 🧬 What Makes It Different
 
-Instead of "make it look modern", the Designer enforces 4 constraint layers:
+### 🎯 Constrained Generation
+
+Instead of "make it look modern", the Designer enforces **4 constraint layers**:
 
 | Layer | What It Does | Example Constraint |
 |-------|-------------|-------------------|
-| **Concept** | Picks a design metaphor from project purpose | Must differ from last 3 same-type projects |
-| **Color** | HSL harmony algorithm (complementary/analogous/triadic/split-comp) | WCAG 4.5:1 on every text/bg pair. No pure #000/#fff |
-| **Typography** | Proven font pairing categories | Google Fonts only. **Banned: Inter, Roboto, Arial** |
-| **Motion** | Timing token system with ranges | CSS-only default. `prefers-reduced-motion` required |
+| 💡 **Concept** | Picks a design metaphor from project purpose | Must differ from last 3 same-type projects |
+| 🎨 **Color** | HSL harmony algorithm (complementary/analogous/triadic/split-comp) | WCAG 4.5:1 on every text/bg pair. No pure #000/#fff |
+| ✏️ **Typography** | Proven font pairing categories | Google Fonts only. **Banned: Inter, Roboto, Arial** |
+| 🎬 **Motion** | Timing token system with ranges | CSS-only default. `prefers-reduced-motion` required |
 
-### 5-Dimension Quality Scoring
+### 📊 5-Dimension Quality Scoring
 
-The Reviewer scores every build:
+The Reviewer scores every build on a **0-100 weighted scale**:
 
-- **Design Fidelity** (30%) — tokens used, no hardcoded colors
-- **Accessibility** (25%) — WCAG contrast, focus states, ARIA, keyboard nav
-- **Performance** (20%) — server components, code splitting, image optimization
-- **Code Quality** (15%) — TypeScript (no `any`), <200 line components
-- **Architecture** (10%) — plan compliance, RTL/i18n
+| Dimension | Weight | What It Checks |
+|-----------|--------|---------------|
+| 🎨 Design Fidelity | 30% | Tokens used, no hardcoded colors, concept reflected |
+| ♿ Accessibility | 25% | WCAG contrast, focus states, ARIA, keyboard nav |
+| ⚡ Performance | 20% | Server components, code splitting, image optimization |
+| 🧹 Code Quality | 15% | TypeScript (no `any`), <200 line components |
+| 📐 Architecture | 10% | Plan compliance, RTL/i18n |
 
-Score < 80? Builder auto-fixes critical issues (max 2 rounds).
+**Score < 80?** Builder auto-fixes critical issues (max 2 rounds). 🔄
 
-### 8 Project Profiles
+### 🗂️ 8 Project Profiles
 
 Each profile defines layout patterns, component priorities, perf targets, and design emphasis:
 
-`landing` · `saas` · `dashboard` · `ecommerce` · `crm` · `portfolio` · `blog` · `desktop`
+| Profile | Best For |
+|---------|----------|
+| 🚀 `landing` | Marketing pages, one-pagers, launch sites |
+| 💼 `saas` | SaaS marketing + app shell |
+| 📊 `dashboard` | Admin panels, analytics, metrics |
+| 🛒 `ecommerce` | Stores, product catalogs, checkout |
+| 📇 `crm` | Contact management, deal pipelines |
+| 🖼️ `portfolio` | Creative showcases, galleries |
+| 📝 `blog` | Content sites, articles, editorial |
+| 🖥️ `desktop` | Electron apps, native-feeling tools |
 
-### Self-Learning
+### 🧠 Self-Learning
 
-After every run, the system extracts what worked/failed/should change. User overrides at the design gate (changing a color, picking a different font) get highest priority. Learnings are saved per-project and loaded into future runs.
+After every run, the system extracts **what worked / what failed / what to change**. User overrides at the design gate (changing a color, picking a different font) get **highest priority**. Learnings are saved per-project and loaded into future runs — it gets better the more you use it.
 
-## Commands
+---
+
+## 🚀 Commands
 
 | Command | Description |
 |---------|-------------|
-| `/wa:design [desc]` | Full pipeline: design → architecture → build → review |
-| `/wa:build [desc]` | Build with existing design system (skip design phase) |
-| `/wa:review` | Review existing code against quality standards |
-| `/wa:profile [type]` | Set/view project type |
+| `/wa:design [desc]` | 🎨 Full pipeline: design → architecture → build → review |
+| `/wa:build [desc]` | 🔨 Build with existing design system (skip design phase) |
+| `/wa:review` | 🔍 Review existing code against quality standards |
+| `/wa:profile [type]` | 🗂️ Set/view project type |
 
-## Installation
+---
 
-### Quick (bash)
+## 📦 Installation
+
+### Quick — Bash
 
 ```bash
 git clone https://github.com/choppawave-beep/web-architect.git
@@ -71,7 +103,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Quick (PowerShell)
+### Quick — PowerShell
 
 ```powershell
 git clone https://github.com/choppawave-beep/web-architect.git
@@ -85,109 +117,135 @@ Copy files to `~/.claude/`:
 
 ```
 ~/.claude/
-├── skills/web-architect/
-│   ├── SKILL.md
-│   └── references/
-│       ├── constrained-generation.md
-│       ├── project-profiles.md
-│       └── quality-standards.md
-├── agents/
-│   ├── wa-designer.md
-│   ├── wa-architect.md
-│   ├── wa-builder.md
-│   └── wa-reviewer.md
-└── commands/wa/
-    ├── design.md
-    ├── build.md
-    ├── review.md
-    └── profile.md
+├── 📁 skills/web-architect/
+│   ├── SKILL.md                          ← Orchestrator core
+│   └── 📁 references/
+│       ├── constrained-generation.md     ← 4-layer constraint rules
+│       ├── project-profiles.md           ← 8 project type specs
+│       └── quality-standards.md          ← 5-dimension scoring rubric
+├── 📁 agents/
+│   ├── wa-designer.md                    ← 🎨 Design system generator
+│   ├── wa-architect.md                   ← 📐 Component architecture planner
+│   ├── wa-builder.md                     ← 🔨 Code implementer
+│   └── wa-reviewer.md                    ← 🔍 Quality scorer
+└── 📁 commands/wa/
+    ├── design.md                         ← Full pipeline
+    ├── build.md                          ← Build-only
+    ├── review.md                         ← Review-only
+    └── profile.md                        ← Profile manager
 ```
 
 Then append the contents of `claude-md-snippet.md` to your `~/.claude/CLAUDE.md`.
 
-## Usage
+---
 
-### First time on a project
+## 💡 Usage
 
-```
+### New project
+
+```bash
+# 1. Set your project type
 /wa:profile landing
-```
 
-### Full pipeline
-
-```
+# 2. Run the full pipeline
 /wa:design homepage with hero section, feature grid, pricing table, and testimonials
 ```
 
 The pipeline will:
-1. Generate a unique design system and pause for your approval (palette, fonts, concept)
-2. Plan the component architecture (file structure, data flows, build order)
-3. Build all components using design tokens
-4. Score the build and auto-fix issues if score < 80
+1. 🎨 Generate a unique design system and **pause for your approval** (palette, fonts, concept)
+2. 📐 Plan the component architecture (file structure, data flows, build order)
+3. 🔨 Build all components using design tokens
+4. 🔍 Score the build and auto-fix issues if score < 80
 
-### Output artifacts
+### Existing project — add a page
 
-| File | Purpose |
-|------|---------|
-| `design-system/MASTER.md` | CSS custom properties, concept, fonts, motion tokens |
-| `web-architect-plan.md` | Component tree, file specs, build order |
-| `web-architect-build-report.md` | Files created, token usage, build status |
-| `web-architect-review.md` | 5-dimension scored review with findings |
-
-### Just want a quality audit?
-
+```bash
+# Uses your existing design-system/MASTER.md
+/wa:build dashboard analytics page with charts and stat cards
 ```
+
+### Existing project — quality audit
+
+```bash
+# Works on any code, no design system needed
 /wa:review
 ```
 
-Works on any existing code — no design system required.
+### 📄 Output Artifacts
 
-## Architecture
+| File | Purpose |
+|------|---------|
+| `design-system/MASTER.md` | 🎨 CSS custom properties, concept, fonts, motion tokens |
+| `web-architect-plan.md` | 📐 Component tree, file specs, build order |
+| `web-architect-build-report.md` | 🔨 Files created, token usage, build status |
+| `web-architect-review.md` | 🔍 5-dimension scored review with findings |
+
+---
+
+## 🏛️ Architecture
 
 ```
-┌─────────────────────────────┐
-│     /wa:design command       │  ← Orchestrator (~5% context)
-│     (commands/wa/design.md)  │
-└──────────┬──────────────────┘
-           │ spawns
-    ┌──────┼──────────┬──────────────┐
-    ▼      ▼          ▼              ▼
+┌──────────────────────────────┐
+│   /wa:design command          │  ← 🧠 Orchestrator (~5% context)
+│   (commands/wa/design.md)     │
+└───────────┬──────────────────┘
+            │ spawns agents sequentially
+     ┌──────┼──────────┬──────────────┐
+     ▼      ▼          ▼              ▼
 ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-│Designer│→│Architect│→│Builder │→│Reviewer│  ← Fresh context each
+│🎨 Desn │→│📐 Arch │→│🔨 Build│→│🔍 Revw │  ← Fresh context each
 └────┬───┘ └────┬───┘ └────┬───┘ └────┬───┘
      │          │          │          │
      ▼          ▼          ▼          ▼
   MASTER.md   plan.md   code files  review.md  ← Files on disk
 ```
 
-**No context bloat**: Orchestrator never reads full file contents — only metadata (score, file count). Each subagent gets 100% fresh context with only the files it needs.
+**Zero context bloat**: Orchestrator never reads full file contents — only metadata (score, file count). Each subagent gets 100% fresh context with only the files it needs.
 
-## Optional Dependencies
+---
 
-Web Architect integrates with these Claude Code skills if you have them installed. They're not required — the system works standalone.
+## 🔌 Optional Integrations
+
+Web Architect integrates with these Claude Code skills **if you have them installed**. They're not required — the system works standalone.
 
 | Skill | Used By | Purpose |
 |-------|---------|---------|
-| [ui-ux-pro-max](https://github.com/nicepkg/claude-code-skills) | Designer | Design recommendations database |
-| [frontend-design](https://github.com/nicepkg/claude-code-skills) | Designer | Anti-AI-slop design rules |
-| [software-architecture](https://github.com/nicepkg/claude-code-skills) | Architect | Clean architecture principles |
-| [vercel-composition-patterns](https://github.com/nicepkg/claude-code-skills) | Architect | React composition patterns |
-| [vercel-react-best-practices](https://github.com/nicepkg/claude-code-skills) | Builder | Performance optimization |
+| [ui-ux-pro-max](https://github.com/nicepkg/claude-code-skills) | 🎨 Designer | Design recommendations database |
+| [frontend-design](https://github.com/nicepkg/claude-code-skills) | 🎨 Designer | Anti-AI-slop design rules |
+| [software-architecture](https://github.com/nicepkg/claude-code-skills) | 📐 Architect | Clean architecture principles |
+| [vercel-composition-patterns](https://github.com/nicepkg/claude-code-skills) | 📐 Architect | React composition patterns |
+| [vercel-react-best-practices](https://github.com/nicepkg/claude-code-skills) | 🔨 Builder | Performance optimization |
 
-## Extending
+---
 
-### Add a project profile
+## 🔧 Extending
 
-Append to `skills/web-architect/references/project-profiles.md`. No code changes needed.
+**➕ Add a project profile** — Append to `references/project-profiles.md`. No code changes needed.
 
-### Add a quality dimension
+**➕ Add a quality dimension** — Edit `references/quality-standards.md`. Update weights (must sum to 100%).
 
-Edit `skills/web-architect/references/quality-standards.md`. Update the scoring weights (must sum to 100%).
+**➕ Customize constraints** — Edit `references/constrained-generation.md`. Add font pairings, harmony types, or motion patterns.
 
-### Customize constraints
+---
 
-Edit `skills/web-architect/references/constrained-generation.md`. Add font pairings, harmony types, or motion patterns.
+## 🤝 Contributing
 
-## License
+Found a bug? Want to add a profile? PRs welcome.
 
-MIT
+- **Issues**: Report bugs or request features
+- **PRs**: Fork → branch → change → PR
+- **Discussions**: Share your design system outputs!
+
+---
+
+## 📄 License
+
+MIT — use it, fork it, ship it.
+
+---
+
+<p align="center">
+  <b>Built for developers who are tired of AI websites that all look the same.</b>
+  <br/>
+  <sub>⭐ Star this repo if it saves you from another Inter + blue gradient combo</sub>
+</p>
