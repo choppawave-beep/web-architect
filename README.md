@@ -94,7 +94,15 @@ After every run, the system extracts **what worked / what failed / what to chang
 
 ## 📦 Installation
 
-### Quick — Bash
+### ⚡ One-liner (recommended)
+
+```bash
+npx skills add choppawave-beep/web-architect
+```
+
+Works with Claude Code, Cursor, Gemini CLI, Codex CLI, and more. Auto-detects your agent and installs to the right location.
+
+### 🔧 Manual — Bash
 
 ```bash
 git clone https://github.com/choppawave-beep/web-architect.git
@@ -103,7 +111,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Quick — PowerShell
+### 🔧 Manual — PowerShell
 
 ```powershell
 git clone https://github.com/choppawave-beep/web-architect.git
