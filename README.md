@@ -1,15 +1,26 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/Claude_Code-Skill-blueviolet?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0xMiAyTDIgN2wxMCA1IDEwLTV6Ii8+PHBhdGggZD0iTTIgMTdsMTAgNSAxMC01Ii8+PHBhdGggZD0iTTIgMTJsMTAgNSAxMC01Ii8+PC9zdmc+" alt="Claude Code Skill" />
+  <img src="https://img.shields.io/badge/Claude_Code-Skill-blueviolet?style=for-the-badge" alt="Claude Code" />
+  <img src="https://img.shields.io/badge/Cursor-Compatible-blue?style=for-the-badge" alt="Cursor" />
+  <img src="https://img.shields.io/badge/Amp-Compatible-teal?style=for-the-badge" alt="Amp" />
+  <img src="https://img.shields.io/badge/Codex_CLI-Compatible-black?style=for-the-badge" alt="Codex CLI" />
+  <img src="https://img.shields.io/badge/Gemini_CLI-Compatible-yellow?style=for-the-badge" alt="Gemini CLI" />
+  <br/>
   <img src="https://img.shields.io/badge/Agents-4_Subagents-orange?style=for-the-badge" alt="4 Subagents" />
   <img src="https://img.shields.io/badge/Profiles-8_Project_Types-green?style=for-the-badge" alt="8 Profiles" />
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
 </p>
 
-# 🏗️ Web Architect — Claude Code Skill
+# 🏗️ Web Architect — Agent Skill
 
 > **One command. Four agents. Zero generic output.**
 
-A 4-agent orchestrator skill for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that runs a full **design-to-code pipeline** for any web project. One command generates a unique design system, plans the architecture, builds the code, and reviews quality — all with enforced constraints that prevent the "AI-generated" look.
+A 4-agent orchestrator skill for AI coding agents that runs a full **design-to-code pipeline** for any web project. One command generates a unique design system, plans the architecture, builds the code, and reviews quality — all with enforced constraints that prevent the "AI-generated" look.
+
+Works with **Claude Code** · **Cursor** · **Amp** · **Codex CLI** · **Gemini CLI** · **GitHub Copilot** · **Windsurf** · and [15+ more agents](https://skills.sh)
+
+```bash
+npx skills add choppawave-beep/web-architect
+```
 
 ```
 /wa:design homepage with hero, pricing table, and testimonials
@@ -94,13 +105,23 @@ After every run, the system extracts **what worked / what failed / what to chang
 
 ## 📦 Installation
 
-### ⚡ One-liner (recommended)
+### ⚡ Universal (auto-detects your agent)
 
 ```bash
 npx skills add choppawave-beep/web-architect
 ```
 
-Works with Claude Code, Cursor, Gemini CLI, Codex CLI, and more. Auto-detects your agent and installs to the right location.
+### 🎯 Per-Agent Install
+
+| Agent | Command |
+|-------|---------|
+| 🟣 **Claude Code** | `npx skills add choppawave-beep/web-architect -a claude-code` |
+| 🔵 **Cursor** | `npx skills add choppawave-beep/web-architect -a cursor` |
+| ⚡ **Amp** | `npx skills add choppawave-beep/web-architect -a amp` |
+| ⬛ **Codex CLI** | `npx skills add choppawave-beep/web-architect -a codex` |
+| 🟡 **Gemini CLI** | `npx skills add choppawave-beep/web-architect -a gemini-cli` |
+| 🟢 **GitHub Copilot** | `npx skills add choppawave-beep/web-architect -a github-copilot` |
+| 🌊 **Windsurf** | `npx skills add choppawave-beep/web-architect -a windsurf` |
 
 ### 🔧 Manual — Bash
 
